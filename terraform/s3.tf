@@ -45,6 +45,10 @@ resource "aws_s3_bucket_lifecycle_configuration" "cost_data" {
     id     = "transition-old-reports"
     status = "Enabled"
 
+    filter {
+     prefix = "reports/"
+    }
+
     transition {
       days          = 90
       storage_class = "GLACIER_IR"
