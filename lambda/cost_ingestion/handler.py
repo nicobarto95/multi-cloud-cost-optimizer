@@ -127,27 +127,64 @@ def lambda_handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
 
 def calculate_potential_savings(idle_resources: Dict[str, list]) -> float:
     """
-    Calculate potential monthly savings from idle resources
-    
-    Args:
-        idle_resources: Dictionary of idle resources by type
-        
-    Returns:
-        Estimated monthly savings in USD
+    Calcola risparmi basati sul tipo effettivo di risorsa
     """
-    # Rough estimates (you can make these more precise)
-    savings_estimates = {
-        'ec2_stopped': 30.0,  # Average t3.medium cost/month
-        'ebs_unattached': 10.0,  # Average 100GB EBS cost/month
-        'eip_unassociated': 3.65,  # $0.005/hour
-        'rds_stopped': 50.0,  # Average db.t3.medium cost/month
-        'elb_unused': 18.0,  # ALB base cost/month
-    }
-    
     total_savings = 0.0
-    for resource_type, resources in idle_resources.items():
-        cost_per_resource = savings_estimates.get(resource_type, 0)
-        total_savings += len(resources) * cost_per_resource
+    
+    # EC2 stopped - calcola per tipo istanza
+    for instance in idle_resources.get('ec2_stopped', []):
+        instance_type = instance.get('type', 't3.medium')
+        
+        # Mappa prezzi per tipo (eu-west-1)
+        ec2_pricing = {
+            't3.micro': 10.0,
+            't3.small': 15.0,
+            't3.medium': 30.0,
+            't3.large': 60.0,
+            't3.xlarge': 120.0,
+        }
+        
+        total_savings += ec2_pricing.get(instance_type, 30.0)
+    
+    # EBS - calcola per dimensione effettiva
+    for volume in idle_resources.get('ebs_unattached', []):
+        size_gb = volume.get('size', 100)
+        volume_type = volume.get('type', 'gp3')
+        
+        # Prezzi per GB/mese
+        ebs_pricing = {
+            'gp3': 0.08,
+            'gp2': 0.10,
+            'io1': 0.125,
+            'st1': 0.045,
+        }
+        
+        price_per_gb = ebs_pricing.get(volume_type, 0.08)
+        total_savings += size_gb * price_per_gb
+    
+    # EIP - fisso
+    total_savings += len(idle_resources.get('eip_unassociated', [])) * 3.65
+    
+    # RDS - calcola per instance class
+    for db in idle_resources.get('rds_stopped', []):
+        instance_class = db.get('instance_class', 'db.t3.medium')
+        storage_gb = db.get('storage', 100)
+        
+        # Costo istanza + storage
+        rds_instance_pricing = {
+            'db.t3.micro': 15.0,
+            'db.t3.small': 30.0,
+            'db.t3.medium': 60.0,
+            'db.t3.large': 120.0,
+        }
+        
+        instance_cost = rds_instance_pricing.get(instance_class, 60.0)
+        storage_cost = storage_gb * 0.115  # $0.115/GB per RDS storage
+        
+        total_savings += instance_cost + storage_cost
+    
+    # ALB - fisso
+    total_savings += len(idle_resources.get('elb_unused', [])) * 18.0
     
     return round(total_savings, 2)
 

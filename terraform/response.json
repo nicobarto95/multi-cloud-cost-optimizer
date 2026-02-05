@@ -1,0 +1,1 @@
+{"statusCode": 200, "body": "{\"message\": \"Cost ingestion completed successfully\", \"summary\": {\"total_cost\": 0.0, \"idle_resources_count\": 0, \"potential_savings\": 0.0}, \"s3_location\": \"s3://cost-optimizer-dev-428466149530/reports/year=2026/month=02/day=05/cost-report-2026-02-05.json\"}"}

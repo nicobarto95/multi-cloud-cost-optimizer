@@ -1,0 +1,152 @@
+{
+  "timestamp": "2026-02-05T15:03:12.168748",
+  "date": "2026-02-05",
+  "environment": "dev",
+  "summary": {
+    "total_cost": 0.0,
+    "idle_resources_count": 0,
+    "potential_savings": 0.0
+  },
+  "cost_data": {
+    "total_cost": 0.0,
+    "daily_costs": [
+      {
+        "date": "2026-01-06",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-07",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-08",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-09",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-10",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-11",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-12",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-13",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-14",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-15",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-16",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-17",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-18",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-19",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-20",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-21",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-22",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-23",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-24",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-25",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-26",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-27",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-28",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-29",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-30",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-01-31",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-02-01",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-02-02",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-02-03",
+        "cost": 0.0
+      },
+      {
+        "date": "2026-02-04",
+        "cost": 0.0
+      }
+    ],
+    "currency": "USD"
+  },
+  "service_breakdown": {
+    "services": {},
+    "top_5_services": []
+  },
+  "idle_resources": {
+    "ec2_stopped": [],
+    "ebs_unattached": [],
+    "eip_unassociated": [],
+    "rds_stopped": [],
+    "elb_unused": []
+  },
+  "trends": {
+    "current_period": 0.0,
+    "error": "Unable to calculate trend data"
+  },
+  "recommendations": []
+}
