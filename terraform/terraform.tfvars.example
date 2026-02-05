@@ -1,0 +1,19 @@
+# AWS Configuration
+aws_region  = "eu-west-1"
+environment = "dev"
+owner       = "nicola-bartolini"
+
+# Lambda Configuration
+lambda_runtime = "python3.11"
+lambda_memory  = 256
+lambda_timeout = 300
+
+# Schedule: Daily at 2 AM UTC
+schedule_expression = "cron(0 2 * * ? *)"
+
+# S3 Configuration
+s3_bucket_prefix = "cost-optimizer"
+
+# Logging
+enable_cloudwatch_logs = true
+log_retention_days     = 7
